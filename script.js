@@ -27,6 +27,41 @@ const weightConversionFactors = {
     oz: { g: 28.3495, kg: 0.0283495, lb: 0.0625, oz: 1 }
 };
 
+const units = {
+    length: ['cm', 'm', 'in', 'ft'],
+    temperature: ['celsius', 'fahrenheit', 'kelvin'],
+    weight: ['g', 'kg', 'lb', 'oz']
+};
+
+function updateUnits() {
+    const conversionType = document.getElementById("conversionType").value;
+    const fromUnitSelect = document.getElementById("fromUnit");
+    const toUnitSelect = document.getElementById("toUnit");
+
+    // Clear previous options
+    fromUnitSelect.innerHTML = '';
+    toUnitSelect.innerHTML = '';
+
+    // Get the units based on conversion type
+    const selectedUnits = units[conversionType];
+
+    // Populate the dropdowns with the correct units
+    selectedUnits.forEach(unit => {
+        const optionFrom = document.createElement("option");
+        optionFrom.value = unit;
+        optionFrom.textContent = unit;
+        fromUnitSelect.appendChild(optionFrom);
+
+        const optionTo = document.createElement("option");
+        optionTo.value = unit;
+        optionTo.textContent = unit;
+        toUnitSelect.appendChild(optionTo);
+    });
+
+    // Trigger a conversion on type change
+    convert();
+}
+
 function convert() {
     const input = parseFloat(document.getElementById("input").value);
     const conversionType = document.getElementById("conversionType").value;
@@ -41,11 +76,9 @@ function convert() {
     let result;
 
     if (conversionType === "length") {
-        // Length conversion
         result = input * lengthConversionFactors[fromUnit][toUnit];
         document.getElementById("result").textContent = `${input} ${fromUnit} is equal to ${result} ${toUnit}`;
     } else if (conversionType === "temperature") {
-        // Temperature conversion
         if (fromUnit === toUnit) {
             result = input; // No conversion needed if the units are the same
         } else {
@@ -53,8 +86,10 @@ function convert() {
             document.getElementById("result").textContent = `${input} ${fromUnit} is equal to ${result.toFixed(2)} ${toUnit}`;
         }
     } else if (conversionType === "weight") {
-        // Weight conversion
         result = input * weightConversionFactors[fromUnit][toUnit];
         document.getElementById("result").textContent = `${input} ${fromUnit} is equal to ${result.toFixed(2)} ${toUnit}`;
     }
 }
+
+// Call updateUnits() on page load to initialize the dropdowns
+updateUnits();
