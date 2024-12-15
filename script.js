@@ -20,6 +20,13 @@ const temperatureConversionFunctions = {
     }
 };
 
+const weightConversionFactors = {
+    g: { g: 1, kg: 0.001, lb: 0.00220462, oz: 0.035274 },
+    kg: { g: 1000, kg: 1, lb: 2.20462, oz: 35.274 },
+    lb: { g: 453.592, kg: 0.453592, lb: 1, oz: 16 },
+    oz: { g: 28.3495, kg: 0.0283495, lb: 0.0625, oz: 1 }
+};
+
 function convert() {
     const input = parseFloat(document.getElementById("input").value);
     const conversionType = document.getElementById("conversionType").value;
@@ -45,5 +52,9 @@ function convert() {
             result = temperatureConversionFunctions[fromUnit][toUnit](input);
             document.getElementById("result").textContent = `${input} ${fromUnit} is equal to ${result.toFixed(2)} ${toUnit}`;
         }
+    } else if (conversionType === "weight") {
+        // Weight conversion
+        result = input * weightConversionFactors[fromUnit][toUnit];
+        document.getElementById("result").textContent = `${input} ${fromUnit} is equal to ${result.toFixed(2)} ${toUnit}`;
     }
 }
