@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <div class="converter">
+        <label for="input">Enter a value:</label>
+        <input type="number" id="input" placeholder="Value">
+        <select id="conversionType">
+            <option value="length">Length</option>
+            <option value="temperature">Temperature</option>
+        </select>
+        <select id="fromUnit">
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+            <option value="celsius">°C</option>
+            <option value="fahrenheit">°F</option>
+            <option value="kelvin">K</option>
+        </select>
+        <select id="toUnit">
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+            <option value="celsius">°C</option>
+            <option value="fahrenheit">°F</option>
+            <option value="kelvin">K</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <p id="result"></p>
+        <p>&copy; Developed by Rashida and Alhassan</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
