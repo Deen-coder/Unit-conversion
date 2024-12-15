@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+.converter {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.converter label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.converter input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.converter select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.converter button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.converter button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
